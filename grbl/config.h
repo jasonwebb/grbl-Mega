@@ -179,6 +179,10 @@
 // have the same steps per mm internally.
 // #define COREXY // Default disabled. Uncomment to enable.
 
+// Enable hanging wall plotter kinematics.
+// TODO: Add documentation about what exactly is supported and what isn't.
+#define WALL_PLOTTER
+
 // Inverts pin logic of the control command pins based on a mask. This essentially means you can use
 // normally-closed switches on the specified pins, rather than the default normally-open switches.
 // NOTE: The top option will mask and invert all control pins. The bottom option is an example of
