@@ -289,6 +289,14 @@ float system_convert_axis_steps_to_mpos(int32_t *steps, uint8_t idx)
     } else {
       pos = steps[idx]/settings.steps_per_mm[idx];
     }
+  #elif defined(WALL_PLOTTER)
+    if (idx==X_AXIS) {
+      pos = (float)system_convert_wall_plotter_to_x_axis_steps(steps) / settings.steps_per_mm[idx];
+    } else if (idx==Y_AXIS) {
+      pos = (float)system_convert_wall_plotter_to_y_axis_steps(steps) / settings.steps_per_mm[idx];
+    } else {
+      pos = steps[idx]/settings.steps_per_mm[idx];
+    }
   #else
     pos = steps[idx]/settings.steps_per_mm[idx];
   #endif
@@ -315,6 +323,21 @@ void system_convert_array_steps_to_mpos(float *position, int32_t *steps)
   int32_t system_convert_corexy_to_y_axis_steps(int32_t *steps)
   {
     return( (steps[A_MOTOR] - steps[B_MOTOR])/2 );
+  }
+#endif
+
+
+// Wall plotter calculation only. Returns x or y-axis "steps" based on wall plotter motor steps.
+// A length = sqrt( X^2 + Y^2 )
+// B length = sqrt( (MACHINE_WIDTH - X)^2 + Y^2 )
+#ifdef WALL_PLOTTER
+  int32_t system_convert_wall_plotter_to_x_axis_steps(int32_t *steps)
+  {
+    return( sqrt(steps[A_MOTOR]*steps[A_MOTOR] + steps[B_MOTOR]*steps[B_MOTOR]) );
+  }
+  int32_t system_convert_wall_plotter_to_y_axis_steps(int32_t *steps)
+  {
+    return( sqrt( square(settings.max_travel[A_MOTOR] - steps[A_MOTOR]) + steps[B_MOTOR]*steps[B_MOTOR] ) );
   }
 #endif
 
