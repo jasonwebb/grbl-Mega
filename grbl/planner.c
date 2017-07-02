@@ -504,6 +504,14 @@ void plan_sync_position()
       } else {
         pl.position[idx] = sys_position[idx];
       }
+    #elif defined(WALL_PLOTTER)
+      if (idx==X_AXIS) {
+        pl.position[X_AXIS] = system_convert_wall_plotter_to_x_axis_steps(sys_position);
+      } else if (idx==Y_AXIS) {
+        pl.position[Y_AXIS] = system_convert_wall_plotter_to_y_axis_steps(sys_position);
+      } else {
+        pl.position[idx] = sys_position[idx];
+      }
     #else
       pl.position[idx] = sys_position[idx];
     #endif
