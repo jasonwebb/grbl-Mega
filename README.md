@@ -1,6 +1,9 @@
 ![GitHub Logo](https://github.com/gnea/gnea-Media/blob/master/Grbl%20Logo/Grbl%20Logo%20250px.png?raw=true)
+
 ***
-_Click the `Release` tab to download pre-compiled `.hex` files or just [click here](https://github.com/gnea/grbl/releases)_
+_**This repository is an experimental branch of the official v1.1 grbl-Mega repo intended to add support for hanging wall plotters (also known as polargraphs).**_
+
+For a full description of the types of systems this branch is intended to support, along with other implementation notes, see the  [wiki](https://github.com/jasonwebb/grbl-mega-wall-plotter/wiki).
 ***
 
 Grbl is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling. This version of Grbl runs on an Arduino Mega2560 only.
@@ -27,7 +30,7 @@ Grbl includes full acceleration management with look ahead. That means the contr
 
 ***
 
-##Update Summary for v1.1
+## Update Summary for v1.1
 - **IMPORTANT:** Your EEPROM will be wiped and restored with new settings. This is due to the addition of two new spindle speed '$' settings.
 
 - **Real-time Overrides** : Alters the machine running state immediately with feed, rapid, spindle speed, spindle stop, and coolant toggle controls. This awesome new feature is common only on industrial machines, often used to optimize speeds and feeds while a job is running. Most hobby CNC's try to mimic this behavior, but usually have large amounts of lag. Grbl executes overrides in realtime and within tens of milliseconds.
