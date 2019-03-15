@@ -516,7 +516,13 @@
   #define DEFAULT_STEPPING_INVERT_MASK 0
   #define DEFAULT_DIRECTION_INVERT_MASK 0
   #define DEFAULT_STEPPER_IDLE_LOCK_TIME 25 // msec (0-254, 255 keeps steppers enabled)
-  #define DEFAULT_SOFT_LIMIT_ENABLE 0 // true
+  #define DEFAULT_STATUS_REPORT_MASK 1 // MPos enabled	19	  #define DEFAULT_SOFT_LIMIT_ENABLE 0 // true
+  #define DEFAULT_JUNCTION_DEVIATION 0.02 // mm		
+  #define DEFAULT_ARC_TOLERANCE 0.002 // mm		
+  #define DEFAULT_REPORT_INCHES 0 // false		
+  #define DEFAULT_INVERT_ST_ENABLE 0 // false		
+  #define DEFAULT_INVERT_LIMIT_PINS 0 // false
+  #define DEFAULT_SOFT_LIMIT_ENABLE 0 // false
   #define DEFAULT_HARD_LIMIT_ENABLE 0  // false
   #define DEFAULT_INVERT_PROBE_PIN 0 // false
   #define DEFAULT_LASER_MODE 0 // false
