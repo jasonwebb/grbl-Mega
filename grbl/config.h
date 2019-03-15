@@ -111,7 +111,7 @@
 // on separate pin, but homed in one cycle. Also, it should be noted that the function of hard limits
 // will not be affected by pin sharing.
 // NOTE: Defaults are set for a traditional 3-axis CNC machine. Z-axis first to clear, followed by X & Y.
-#ifdef DEFAULTS_RAMPS_BOARD
+#if defined(DEFAULTS_RAMPS_BOARD) || defined(DEFAULTS_WALL_PLOTTER)
   #define HOMING_CYCLE_0 (1<<X_AXIS)   // Home X axis
   #define HOMING_CYCLE_1 (1<<Y_AXIS)   // Home Y axis
   #define HOMING_CYCLE_2 (1<<Z_AXIS)   // OPTIONAL: Home Z axis 
@@ -119,7 +119,7 @@
   #define HOMING_CYCLE_0 (1<<Z_AXIS)                // REQUIRED: First move Z to clear workspace.
   #define HOMING_CYCLE_1 ((1<<X_AXIS)|(1<<Y_AXIS))  // OPTIONAL: Then move X,Y at the same time.
   // #define HOMING_CYCLE_2                         // OPTIONAL: Uncomment and add axes mask to enable
-#endif // DEFAULTS_RAMPS_BOARD
+#endif // DEFAULTS_RAMPS_BOARD or DEFAULTS_WALL_PLOTTER
 
 // NOTE: The following are two examples to setup homing for 2-axis machines.
 // #define HOMING_CYCLE_0 ((1<<X_AXIS)|(1<<Y_AXIS))  // NOT COMPATIBLE WITH COREXY: Homes both X-Y in one cycle. 
